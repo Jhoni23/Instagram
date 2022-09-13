@@ -76,7 +76,7 @@ class Lista extends Component{
                     />
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btnSend}>
+                <TouchableOpacity style={styles.iconelike}>
                     <Image
                         source={require('../img/send.png')}
                         style={styles.iconelike}
@@ -104,9 +104,11 @@ const styles = StyleSheet.create({
      backgroundColor: "black"
  },
  nomeUsuario:{
-    fontSize: 22,
+    marginLeft: 5,
+    fontSize: 13,
     textAlign: 'left',
     color: '#FFF',
+    fontWeight: 600,
  },
  fotoPerfil:{
     width: 30,
@@ -116,7 +118,6 @@ const styles = StyleSheet.create({
  fotoPublicacao:{
     height: 400,
     alignItems: 'center',
-    backgroundColor: "red",
  },
  viewPerfil:{
     flexDirection: 'row',
@@ -126,18 +127,18 @@ const styles = StyleSheet.create({
  },
  areaBtn:{
     flexDirection: 'row',
-    padding: 5
+    padding: 5,
+    paddingVertical: 8,
  },
  iconelike:{
-    width: 25,
+    width: 23,
     aspectRatio: 1,
- },
- btnSend:{
-    paddingLeft: 5,
+    marginLeft: 10
  },
  viewRodape:{
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'red',
  },
  descRodape:{
     paddingLeft: 5,
@@ -153,6 +154,7 @@ const styles = StyleSheet.create({
  likes:{
     fontWeight: 'bold',
     marginLeft: 5,
+    color: '#FFF'
  }
 });
 export default Lista;
