@@ -1,114 +1,84 @@
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer, DarkTheme } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Lista from './src/Lista';
+import Part2 from './src/screens/Part2';
+import Perfil from './src/screens/Perfil';
 
-class App extends Component {
- constructor(props){
-    super(props);
-    this.state = {
-        feed: [
-            {
-                id: '1',
-                nome: 'Lucas Silva',
-                descricao: 'Mais um dia de muitos bugs :)',
-                imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png',
-                imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto1.png',
-                likeada: true,
-                likers: 1
-            },
-            {
-                id: '2',
-                nome: 'Matheus',
-                descricao: 'Isso sim é ser raiz!!!!!',
-                imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil2.png',
-                imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto2.png',
-                likeada: false,
-                likers: 0
-            },
-            {
-                id: '3',
-                nome: 'Jose Augusto',
-                descricao: 'Bora trabalhar Haha',
-                imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil3.png',
-                imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto3.png',
-                likeada: false,
-                likers: 3
-            },
-            {
-                id: '4',
-                nome: 'Gustavo Henrique',
-                descricao: 'Isso sim que é TI!',
-                imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png',
-                imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto4.png',
-                likeada: false,
-                likers: 1
-            },
-            {
-                id: '5',
-                nome: 'Guilherme',
-                descricao: 'Boa tarde galera do insta...',
-                imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil2.png',
-                imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto5.png',
-                likeada: false,
-                likers: 32
-            }
-        ]
-    };
- }
+import { BiHomeAlt, BiSearch} from 'react-icons/bi';
+import { IoBagHandleOutline } from 'react-icons/io5';
+import { FaRegUserCircle } from 'react-icons/fa';
+import { CgClapperBoard } from 'react-icons/cg';
 
- render() {
-    return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <TouchableOpacity>
-                    <Image
-                        source={require('./src/img/logo.png')}
-                        style={styles.logo}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Image
-                        source={require('./src/img/send.png')}
-                        style={styles.send}
-                    />
-                </TouchableOpacity>
-            </View>
-            <FlatList
-                showsHorizontalScrollIndicator={false}
-                keyExtractor={(item) => item.id}
-                data={this.state.feed}
-                renderItem={ ({item}) => <Lista data={item} /> }
-            />
-        </View>
-    );
- }
+export default function App() {
+  const Tab = createBottomTabNavigator();
+
+  return (
+    <NavigationContainer theme={DarkTheme}>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarActiveTintColor: 'gray',
+          tabBarInactiveTintColor: 'white',
+
+          tabBarActiveBackgroundColor: 'black',
+          tabBarInactiveBackgroundColor: 'black',
+
+          headerShown: false,
+          tabBarShowLabel: false,
+        })}
+      >
+        <Tab.Screen
+          name="Home"
+          component={Part2}
+          options={{
+            tabBarIcon: () => (
+              <BiHomeAlt color='white' size={26}/>
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="Explorer"
+          component={Perfil}
+          options={{
+            tabBarIcon: () => (
+              <BiSearch color='white' size={26} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="Reels"
+          component={Perfil}
+          options={{
+            tabBarIcon: () => (
+              <CgClapperBoard color='white' size={26} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="Shop"
+          component={Perfil}
+          options={{
+            tabBarIcon: () => (
+              <IoBagHandleOutline color='white' size={26} />
+            ),
+          }}
+        />
+
+        <Tab.Screen
+          name="Perfil"
+          component={Perfil}
+          options={{
+            tabBarIcon: () => (
+              <FaRegUserCircle color='white' size={25} />
+            ),
+          }}
+        />
+
+
+      </Tab.Navigator>
+    </NavigationContainer>
+  );
 }
-
-const styles = StyleSheet.create({
- container: {
-    flex: 1,
- },
- header:{
-    height: 55,
-    backgroundColor: '#000',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 5,
-    borderBottomWidth: 0.2,
-    shadowColor: '#000',
-    elevation: 1,
-    paddingHorizontal: 10
- },
- send:{
-    width: 23,
-    height: 23
- },
- logo:{
-     height: 25,
-     width:90,
- }
-});
-
-export default App;
