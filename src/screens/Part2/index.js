@@ -3,6 +3,10 @@ import { Platform, StyleSheet, Text, View, Image, TouchableOpacity, FlatList } f
 import styles from './styles';
 import Lista from '../Lista';
 
+import { TbHeart } from 'react-icons/tb';
+import { FiPlusSquare } from 'react-icons/fi';
+import { RiMessengerLine } from 'react-icons/ri';
+
 const Part2 = () => {
     const feed = [
             {
@@ -12,6 +16,7 @@ const Part2 = () => {
                 imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png',
                 imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto1.png',
                 likeada: true,
+                saved: true,
                 likers: 1
             },
             {
@@ -21,6 +26,7 @@ const Part2 = () => {
                 imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil2.png',
                 imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto2.png',
                 likeada: false,
+                saved: false,
                 likers: 0
             },
             {
@@ -30,6 +36,7 @@ const Part2 = () => {
                 imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil3.png',
                 imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto3.png',
                 likeada: false,
+                saved: false,
                 likers: 3
             },
             {
@@ -39,6 +46,7 @@ const Part2 = () => {
                 imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil1.png',
                 imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto4.png',
                 likeada: false,
+                saved: true,
                 likers: 1
             },
             {
@@ -48,6 +56,7 @@ const Part2 = () => {
                 imgperfil: 'https://sujeitoprogramador.com/instareact/fotoPerfil2.png',
                 imgPublicacao: 'https://sujeitoprogramador.com/instareact/foto5.png',
                 likeada: false,
+                saved: false,
                 likers: 32
             }
         ]
@@ -61,12 +70,27 @@ const Part2 = () => {
                         style={styles.logo}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity>
-                    <Image
-                        source={require('../../img/send.png')}
-                        style={styles.send}
-                    />
-                </TouchableOpacity>
+
+                <View style={styles.areaIcons}>
+                    <TouchableOpacity>
+                        <FiPlusSquare
+                            color='white'
+                            style={styles.send}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <TbHeart
+                            color='white'
+                            style={styles.send}
+                        />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <RiMessengerLine
+                            color='white'
+                            style={styles.send}
+                        />
+                    </TouchableOpacity>
+                </View>
             </View>
             <FlatList
                 showsHorizontalScrollIndicator={false}

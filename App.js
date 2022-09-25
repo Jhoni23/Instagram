@@ -3,9 +3,9 @@ import { NavigationContainer, DarkTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Part2 from './src/screens/Part2';
-import Perfil from './src/screens/Perfil';
+import Perfil from './src/screens/Others';
 
-import { BiHomeAlt, BiSearch} from 'react-icons/bi';
+import { BiHomeAlt, BiHome , BiSearch} from 'react-icons/bi';
 import { IoBagHandleOutline } from 'react-icons/io5';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { CgClapperBoard } from 'react-icons/cg';
@@ -31,8 +31,8 @@ export default function App() {
           name="Home"
           component={Part2}
           options={{
-            tabBarIcon: () => (
-              <BiHomeAlt color='white' size={26}/>
+            tabBarIcon: ( focused ) => (
+               <BiHomeAlt color='white' size={26}/>
             ),
           }}
         />
